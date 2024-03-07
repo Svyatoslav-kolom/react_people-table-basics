@@ -11,8 +11,8 @@ export const PersonLink: React.FC<Props> = ({ person, people }) => {
   const { slugParam } = useParams();
 
   const { sex, born, died, fatherName, motherName, name, slug } = person;
-  const hasMother = people.find(p => p.name === person.motherName);
-  const hasFather = people.find(p => p.name === person.fatherName);
+  const mother = people.find(p => p.name === person.motherName);
+  const father = people.find(p => p.name === person.fatherName);
 
   return (
     <tr
@@ -34,10 +34,10 @@ export const PersonLink: React.FC<Props> = ({ person, people }) => {
       <td>{born}</td>
       <td>{died}</td>
       <td>
-        {hasMother ? (
+        {mother ? (
           <Link
-            className={cn({ 'has-text-danger': hasMother.sex === 'f' })}
-            to={`/people/${hasMother.slug}`}
+            className={cn({ 'has-text-danger': mother.sex === 'f' })}
+            to={`/people/${mother.slug}`}
           >
             {motherName}
           </Link>
@@ -46,8 +46,8 @@ export const PersonLink: React.FC<Props> = ({ person, people }) => {
         )}
       </td>
       <td>
-        {hasFather ? (
-          <Link to={`/people/${hasFather.slug}`}>{fatherName}</Link>
+        {father ? (
+          <Link to={`/people/${father.slug}`}>{fatherName}</Link>
         ) : (
           fatherName || '-'
         )}

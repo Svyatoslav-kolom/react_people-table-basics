@@ -8,8 +8,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const App = () => (
-  <>
-    {/* Also requires <html class="has-navbar-fixed-top"> */}
+  <div data-cy="app">
     <nav
       className="navbar is-light is-fixed-top is-mobile has-shadow"
       data-cy="Nav"
@@ -31,5 +30,5 @@ export const App = () => (
         <Outlet />
       </div>
     </div>
-  </>
+  </div>
 );
